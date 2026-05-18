@@ -1,23 +1,1032 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+  <style>
+        :root {
+            --primary-color: #2C3E50; /* Soft Dark Blue */
+            --secondary-color: #3498DB; /* Medium Sky Blue */
+            --accent-color: #2ECC71; /* Emerald Green */
+            --text-color: #333;
+            --light-bg: #F8F9FA; /* Very Light Gray */
+            --dark-bg: #1A252F; /* Deep Navy for Hero */
+            --cta-bg: #FF6F61; /* Coral Red for CTA */
+            --border-color: #E0E0E0;
+            --header-bg: #FFFFFF;
+            --footer-bg: #2C3E50; /* Matching primary for footer */
+            --card-bg: #ECF0F1; /* Light Gray for cards */
+            --hover-cta: #E74C3C; /* Darker Red for hover */
+            --highlight-text: #E67E22; /* Carrot Orange for highlights */
+        }
+        
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--light-bg); 
+            color: var(--text-color); 
+            line-height: 1.8; 
+            font-size: 16px; 
+        }
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 25px; 
+            box-sizing: border-box; 
+        }
+        
+        header { 
+            background-color: var(--header-bg); 
+            padding: 25px 0; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.8em; 
+            color: var(--primary-color); 
+            font-weight: 900; 
+        }
+        header h1 a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
+        header p {
+            margin-top: 8px;
+            font-size: 1.1em;
+            color: #555;
+            font-weight: 400;
+        }
+
+        .hero { 
+            background-color: var(--dark-bg); 
+            color: #fff; 
+            text-align: center; 
+            padding: 120px 20px; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .hero h1 { 
+            font-size: 3.8em; 
+            margin-bottom: 20px; 
+            font-weight: 900; 
+            line-height: 1.3; 
+            letter-spacing: -1px;
+        }
+        .hero p { 
+            font-size: 1.5em; 
+            margin-bottom: 50px; 
+            font-weight: 300; 
+            color: #e0e0e0;
+        }
+        .hero .highlight { 
+            color: var(--highlight-text); 
+            font-weight: 700; 
+        }
+        .hero .sub-highlight {
+            color: #A9CCE3; /* Light Blue */
+            font-weight: 500;
+        }
+
+        .cta-btn { 
+            background-color: var(--cta-bg); 
+            color: #fff; 
+            padding: 20px 45px; 
+            font-size: 1.4em; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 60px; 
+            cursor: pointer; 
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
+            text-decoration: none; 
+            display: inline-block; 
+            letter-spacing: -0.5px;
+        }
+        .cta-btn:hover { 
+            background-color: var(--hover-cta); 
+            transform: translateY(-4px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        main { 
+            background-color: #fff; 
+            padding-bottom: 60px; 
+            position: relative;
+            z-index: 1;
+        }
+        .content-section { 
+            padding: 80px 0; 
+            border-bottom: 1px solid var(--border-color); 
+            position: relative;
+        }
+        .content-section:last-child { 
+            border-bottom: none; 
+        }
+        .content-section h2 { 
+            font-size: 2.8em; 
+            color: var(--secondary-color); 
+            text-align: center; 
+            margin-bottom: 40px; 
+            font-weight: 700; 
+            line-height: 1.4;
+            letter-spacing: -0.7px;
+        }
+        .content-section h3 { 
+            font-size: 2.0em; 
+            color: var(--primary-color); 
+            margin-top: 50px; 
+            margin-bottom: 20px; 
+            padding-left: 20px; 
+            border-left: 5px solid var(--highlight-text);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        .content-section p { 
+            margin-bottom: 25px; 
+            font-weight: 400; 
+            color: #444; 
+            text-align: justify;
+        }
+        .content-section strong { 
+            font-weight: 700; 
+            color: var(--primary-color); 
+        }
+        .content-section ul { 
+            list-style: none; 
+            padding-left: 0; 
+            margin-bottom: 25px; 
+        }
+        .content-section li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid #eee; 
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: #555;
+        }
+        .content-section li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .data-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .data-table th, .data-table td { 
+            border: 1px solid var(--border-color); 
+            padding: 18px 15px; 
+            text-align: center; 
+            font-size: 0.98em; 
+        }
+        .data-table th { 
+            background-color: var(--primary-color); 
+            color: #fff; 
+            font-weight: 700; 
+            font-size: 1.1em;
+            letter-spacing: -0.3px;
+        }
+        .data-table tr:nth-child(even) { 
+            background-color: var(--card-bg); 
+        }
+        .data-table td strong { 
+            color: var(--cta-bg); 
+            font-weight: 700;
+        }
+
+        .comparison-form-box { 
+            background-color: var(--card-bg); 
+            padding: 45px; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+            margin-top: 40px; 
+            border: 1px solid #dcdcdc;
+        }
+        .comparison-form-box h2 { 
+            color: var(--primary-color); 
+            text-align: center; 
+            margin-bottom: 30px; 
+            font-size: 2.3em; 
+            letter-spacing: -0.6px;
+        }
+        .comparison-form-box p {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .comparison-form-box label { 
+            display: block; 
+            margin-bottom: 10px; 
+            font-weight: 600; 
+            color: var(--text-color); 
+            font-size: 1.1em;
+        }
+        .comparison-form-box input[type="text"], 
+        .comparison-form-box input[type="tel"],
+        .comparison-form-box input[type="date"],
+        .comparison-form-box input[type="number"],
+        .comparison-form-box select { 
+            width: 100%; 
+            padding: 16px; 
+            margin-bottom: 25px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 1.1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .comparison-form-box input[type="text"]:focus, 
+        .comparison-form-box input[type="tel"]:focus,
+        .comparison-form-box input[type="date"]:focus,
+        .comparison-form-box input[type="number"]:focus,
+        .comparison-form-box select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        .comparison-form-box .form-group { 
+            margin-bottom: 25px; 
+        }
+        .comparison-form-box button[type="submit"] {
+            width: 100%;
+            padding: 20px 45px; 
+            font-size: 1.4em; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 60px; 
+            cursor: pointer; 
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
+            text-decoration: none; 
+            display: inline-block; 
+            letter-spacing: -0.5px;
+            background-color: var(--cta-bg);
+        }
+         .comparison-form-box button[type="submit"]:hover {
+            background-color: var(--hover-cta); 
+            transform: translateY(-4px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+
+        .faq-item { 
+            background-color: #fff; 
+            border: 1px solid var(--border-color); 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .faq-item h3 { 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 22px 25px; 
+            background-color: var(--light-bg); 
+            margin: 0; 
+            font-weight: 700; 
+            color: var(--primary-color); 
+            font-size: 1.3em;
+            transition: color 0.3s;
+        }
+        .faq-item h3:hover {
+            color: var(--secondary-color);
+        }
+        .faq-item h3::after { 
+            content: '+'; 
+            font-size: 1.8em; 
+            color: var(--secondary-color); 
+            transition: transform 0.3s; 
+            font-weight: 400;
+        }
+        .faq-item.active h3::after { 
+            content: '−'; 
+            transform: rotate(0deg); 
+        }
+        .faq-item p { 
+            display: none; 
+            padding: 25px; 
+            color: #555; 
+            background-color: #fff; 
+            font-size: 1.05em;
+            text-align: justify;
+            line-height: 1.9;
+        }
+        .faq-item.active p { 
+            display: block; 
+        }
+
+        .keyword-list { 
+            list-style: none; 
+            padding: 0; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            margin-top: 40px; 
+            margin-bottom: 40px;
+        }
+        .keyword-list li { 
+            background-color: var(--card-bg); 
+            color: var(--primary-color); 
+            padding: 12px 25px; 
+            margin: 7px; 
+            border-radius: 25px; 
+            font-weight: 500; 
+            border: 1px solid var(--border-color); 
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+            cursor: default;
+        }
+        .keyword-list li:hover { 
+            background-color: var(--secondary-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .link-source { 
+            font-size: 0.95em; 
+            color: var(--secondary-color); 
+            text-decoration: underline; 
+            display: block; 
+            margin-top: 8px;
+            transition: color 0.3s;
+        }
+        .link-source:hover {
+            color: var(--highlight-text);
+        }
+
+        footer { 
+            background-color: var(--footer-bg); 
+            color: #ccc; 
+            text-align: center; 
+            padding: 50px 20px; 
+            font-size: 0.95em; 
+            line-height: 1.7; 
+        }
+        footer a { 
+            color: #ccc; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            transition: color 0.3s; 
+        }
+        footer a:hover { 
+            color: #fff; 
+            text-decoration: underline; 
+        }
+        footer p {
+            margin-bottom: 10px;
+        }
+        footer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.0em; }
+            .hero p { font-size: 1.3em; }
+            .cta-btn { padding: 18px 35px; font-size: 1.2em; }
+            .content-section h2 { font-size: 2.4em; }
+            .content-section h3 { font-size: 1.7em; }
+            .comparison-form-box { padding: 35px; }
+            .data-table th, .data-table td { font-size: 0.9em; padding: 15px; }
+            header h1 { font-size: 2.4em; }
+            header p { font-size: 1em;}
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4em; padding: 0 10px; }
+            .hero p { font-size: 1.1em; padding: 0 10px; }
+            .cta-btn { padding: 15px 30px; font-size: 1.1em; }
+            .content-section { padding: 60px 0; }
+            .content-section h2 { font-size: 2.1em; }
+            .content-section h3 { font-size: 1.5em; }
+            .comparison-form-box { padding: 30px; }
+            .data-table th, .data-table td { font-size: 0.85em; padding: 12px 10px; }
+            header h1 { font-size: 2.0em; }
+            header p { font-size: 0.9em;}
+            .keyword-list li { padding: 10px 20px; font-size: 0.9em;}
+            .footer-links a { margin: 0 8px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 80px 15px; }
+            .hero h1 { font-size: 2.0em; }
+            .hero p { font-size: 1.0em; margin-bottom: 30px;}
+            .cta-btn { padding: 12px 25px; font-size: 1.0em; }
+            .content-section { padding: 40px 0; }
+            .content-section h2 { font-size: 1.8em; margin-bottom: 25px;}
+            .content-section h3 { font-size: 1.3em; margin-top: 30px; margin-bottom: 15px;}
+            .comparison-form-box { padding: 25px; margin-top: 30px;}
+            .comparison-form-box h2 { font-size: 1.8em; margin-bottom: 20px;}
+            .comparison-form-box input, .comparison-form-box select { padding: 12px; font-size: 1.0em;}
+            .comparison-form-box button[type="submit"] { font-size: 1.1em; padding: 15px 30px;}
+            .faq-item h3 { font-size: 1.1em; padding: 15px 20px; }
+            .faq-item p { padding: 20px; font-size: 1.0em; }
+            .data-table th, .data-table td { padding: 8px 5px; font-size: 0.8em;}
+            .data-table th { font-size: 0.95em;}
+            header h1 { font-size: 1.7em; }
+            header p { font-size: 0.85em;}
+            .keyword-list li { padding: 8px 15px; margin: 5px;}
+        }
+    </style>
+
+    <!-- JSON-LD for FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "2026년 소나타 DN8 모델의 평균 월 유지비는 얼마인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026년 기준, 소나타 DN8 가솔린 모델의 평균 월 유지비는 차량 가격, 보험료, 자동차세, 유류비, 소모품 교체 비용 등을 포함하여 약 40만 원에서 70만 원 수준으로 예상됩니다. 하이브리드 모델의 경우 유류비 절감 효과로 인해 조금 더 낮을 수 있습니다. 정확한 비용은 개인의 주행 거리, 보험 가입 조건, 운전 습관 등에 따라 크게 달라질 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "자동차리스와 장기렌트카의 가장 큰 차이점은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "자동차리스와 장기렌트카 모두 월 고정 비용으로 신차를 이용할 수 있다는 공통점이 있습니다. 가장 큰 차이점은 '취급 주체'와 '차량 명의'입니다. 장기렌트카는 렌터카 회사 명의로 등록되어 번호판 색상이 다르며, 보험 및 세금 처리가 월 렌트료에 포함되는 경우가 많습니다. 반면 자동차리스는 금융 리스 회사를 통해 진행되며, 차량 명의는 고객 명의 또는 금융사 명의가 될 수 있고, 보험 및 세금은 별도로 처리하는 경우가 일반적입니다. 또한, 장기렌트카는 일반적으로 신용도가 낮아도 이용이 용이하다는 장점이 있습니다. 두 상품 모두 약정 주행거리 초과 시 패널티가 부과될 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "소나타 하이브리드 장기렌트카 가입 시 어떤 혜택을 기대할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "소나타 하이브리드 장기렌트카 가입 시, 연비 효율성이 높은 하이브리드 차량을 통해 유류비를 크게 절감할 수 있습니다. 또한, 장기렌트카 특성상 월 렌트료에 자동차세, 보험료(자차 포함 등)가 포함되어 있어 목돈 지출 없이 차량 운용이 가능하며, 사업자의 경우 법인세 또는 소득세 신고 시 비용 처리(손금 인정)를 통한 절세 효과도 누릴 수 있습니다. 신차를 최신 모델로 주기적으로 교체하고 싶거나, 차량 관리 부담을 줄이고 싶은 분들에게 유리한 선택입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "소나타 차량의 감가상각은 얼마나 심한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "현대자동차 소나타는 국내 중형 세단의 대표적인 모델로서, 일반적으로 다른 동급 모델들과 유사한 수준의 감가상각률을 보입니다. 신차 출고 후 1~3년 사이에 가장 큰 폭의 감가상각이 발생하며, 이후에는 비교적 완만해집니다. 특히 인기 트림(프리미엄, 센슈어스 등)이나 신규 연식 변경 모델일수록 감가상각률이 낮을 수 있습니다. 중고차 시장에서의 인기도, 사고 이력, 주행 거리 등이 감가상각에 영향을 미칩니다. 따라서 리스나 렌트카를 이용하면 감가상각 부담을 직접적으로 느끼지 않고 신차를 이용할 수 있다는 장점이 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "소나타 신차 구매 시 가장 저렴한 곳은 어디인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "소나타 신차 구매 시 가장 저렴한 곳은 여러 요인에 따라 달라질 수 있습니다. 일반적으로 다음과 같은 방법들을 비교해보는 것이 좋습니다: 1. 현금/할부 구매: 전국의 현대자동차 공식 영업점을 방문하여 프로모션(할인, 지원금, 사은품 등)과 할부 조건을 비교하는 것이 기본입니다. 2. 자동차리스: 리스 회사의 견적을 비교하여 월 리스료를 최소화하는 방법을 찾습니다. 3. 장기렌트카: 여러 렌터카 업체의 비교 견적을 통해 가장 저렴한 월 렌트료를 제공하는 곳을 선택합니다. 특히 연말 재고 할인, 신규 출시 기념 프로모션 등을 잘 활용하면 추가적인 할인을 받을 수 있습니다. '네이버 자동차', '구글 자동차' 검색을 통해 다수의 비교 사이트 및 업체 정보를 얻을 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "소나타 하이브리드와 가솔린 모델 중 어떤 것을 선택해야 할까요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "이는 운전자의 주행 습관과 우선순위에 따라 달라집니다. 연간 주행거리가 많고 유류비 절감을 최우선으로 한다면 소나타 하이브리드 모델이 장기적으로 경제적일 수 있습니다. 또한, 하이브리드 모델은 저공해차 혜택을 받을 수 있습니다. 반면, 주행 거리가 많지 않거나 초기 구매 비용 부담을 줄이고 싶다면 소나타 가솔린 모델이 더 합리적인 선택일 수 있습니다. '소나타 연비 비교' 정보를 자세히 확인하고, 본인의 주행 패턴과 예산을 고려하여 결정하는 것이 좋습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "자동차리스나 장기렌트카 계약 시 반드시 확인해야 할 사항은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "가장 중요한 것은 '총 비용'과 '약정 주행거리'입니다. 월 납입금 외에 포함되지 않는 항목(보험료, 자동차세, 정비 비용 등)이 무엇인지 명확히 확인해야 합니다. 또한, 연간 약정 주행거리를 초과할 경우 발생하는 위약금 규정을 반드시 확인하고, 본인의 예상 주행거리와 비교하여 합리적인 거리를 설정해야 합니다. 계약 만료 후 차량 인수 또는 반납 시 발생할 수 있는 추가 비용(연체료, 수리비 등)에 대한 규정도 꼼꼼히 살펴보는 것이 좋습니다. '소나타 리스 견적 비교', '소나타 장기렌트카 비교' 시 이러한 세부 조건들을 면밀히 검토해야 합니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1><a href="/">2026년형 소나타: 유지비, 자동차리스 & 장기렌트카 완벽 분석</a></h1>
+            <p>소나타 DN8, 하이브리드, 센슈어스 등 모델별 신차 구매부터 최저가 견적까지 AI가 분석해 드립니다.</p>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- 히어로 섹션: 핵심 키워드 강조 및 CTA -->
+        <section class="hero">
+            <div class="container">
+                <h1>현명한 <span class="highlight">소나타</span> 구매 전략: <span class="sub-highlight">유지비 절감 & 최저가 리스/렌트</span></h1>
+                <p>평균 얼마? 예상 비용은? 소나타 DN8, 하이브리드, 센슈어스 등 신차 구매부터 자동차리스, 장기렌트카 비교 견적까지, AI가 분석한 2026년 최신 정보를 제공합니다.</p>
+                <a href="#comparison-form-section" class="cta-btn">내 소나타 최저가 견적 바로 보기</a>
+            </div>
+        </section>
+
+        <!-- 핵심 요약 및 비교 견적 폼 섹션 -->
+        <section id="comparison-form-section" class="content-section" style="background-color: var(--light-bg);">
+            <div class="container">
+                <div class="comparison-form-box">
+                    <h2>나에게 맞는 소나타 구매/이용 방법 찾기</h2>
+                    <p>소나타 DN8, 센슈어스, 하이브리드 등 모델별 신차 구매, 자동차리스, 장기렌트카 조건을 입력하면 <strong>AI 맞춤 견적</strong>을 실시간으로 비교 분석해 드립니다.</p>
+                    <form id="main-quote-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="car-model-select">관심 소나타 모델 (2026년형 기준)</label>
+                            <select id="car-model-select" name="car_model" required>
+                                <option value="">-- 모델 선택 --</option>
+                                <option value="sonata_dn8_gasoline">소나타 DN8 가솔린 (프리미엄/익스스/인스퍼)</option>
+                                <option value="sonata_dn8_hybrid">소나타 DN8 하이브리드</option>
+                                <option value="sonata_sensuous">소나타 센슈어스</option>
+                                <option value="sonata_new_rise">소나타 뉴라이즈</option>
+                                <option value="sonata_smartstream">소나타 스마트스트림</option>
+                                <option value="sonata_other">기타 소나타 모델</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="desired-usage">주요 이용 목적</label>
+                            <select id="desired-usage" name="usage" required>
+                                <option value="">-- 선택 --</option>
+                                <option value="personal_commute">개인 출퇴근 (일상용)</option>
+                                <option value="family_use">패밀리카 (주말, 가족용)</option>
+                                <option value="business_use">업무용 (사업자)</option>
+                                <option value="occasional_use">가끔 운행 (세컨드카)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="annual-mileage">예상 연간 주행거리 (km)</label>
+                            <input type="number" id="annual-mileage" name="annual_mileage" placeholder="예: 15,000" required min="5000" max="50000">
+                        </div>
+                        <div class="form-group">
+                            <label for="desired-term">원하는 계약 기간 (월)</label>
+                            <input type="number" id="desired-term" name="desired_term" placeholder="예: 36" required min="12" max="60">
+                        </div>
+                        <div class="form-group">
+                            <label for="initial-payment">선수금 또는 보증금 비율 (%) (없으면 0 입력)</label>
+                            <input type="number" id="initial-payment" name="initial_payment" placeholder="예: 30" min="0" max="50">
+                        </div>
+                         <div class="form-group">
+                            <label for="preferred-method">선호하는 구매/이용 방식</label>
+                            <select id="preferred-method" name="preferred_method" required>
+                                <option value="">-- 선택 --</option>
+                                <option value="purchase_cash_full">현금/일시불 구매</option>
+                                <option value="purchase_finance">할부 구매</option>
+                                <option value="car_lease">자동차리스</option>
+                                <option value="long_term_rental">장기렌트카</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="cta-btn">내 소나타 맞춤 견적 분석 요청</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 1: 소나타 유지비 상세 분석 (2026년 기준) -->
+        <section class="content-section" id="maintenance-costs">
+            <div class="container">
+                <h2 id="sonata-maintenance-costs">2026년 소나타 예상 유지비: 평균 얼마? 모델별 비교</h2>
+                <p><strong>현대자동차 쏘나타</strong>는 국내 중형 세단의 대표주자로서, 합리적인 가격과 뛰어난 성능으로 꾸준한 인기를 얻고 있습니다. 하지만 차량 구매 후에도 고려해야 할 '유지비'는 차량 선택에 있어 매우 중요한 요소입니다. 2026년 최신 정보를 바탕으로, 소나타 모델별 예상 유지비를 상세히 분석하고, 어떤 항목에서 비용을 절감할 수 있는지 알아보겠습니다. 차량 가격, 자동차세, 유류비, 소모품 교체, 보험료 등 총체적인 비용을 고려하여 현명한 선택을 돕겠습니다.</p>
+
+                <h3 id="sonata-gas-maintenance">소나타 가솔린 모델 (DN8, 센슈어스 등) 유지비 상세 분석</h3>
+                <p>가장 대중적인 소나타 가솔린 모델은 뛰어난 주행 성능과 합리적인 가격으로 많은 사랑을 받고 있습니다. 2026년 기준, 소나타 가솔린 모델의 예상 유지비는 다음과 같은 항목들로 구성됩니다. 평균적인 주행 거리(연 15,000km)와 일반적인 운전 습관을 기준으로 산출되었습니다.</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>유지비 항목</th>
+                            <th>예상 비용 (월 평균)</th>
+                            <th>세부 내용 및 고려사항</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>차량 가격 (초기 구매 비용)</strong></td>
+                            <td>-</td>
+                            <td>신차 가격은 트림(프리미엄, 익스클루시브, 인스퍼레이션 등) 및 옵션에 따라 상이. (예: 2,800만 원 ~ 4,000만 원 이상)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>취득세/등록세</strong></td>
+                            <td>-</td>
+                            <td>차량 가격의 7% (개별소비세 포함). 비영업용 승용차 기준.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자동차세</strong></td>
+                            <td>약 4만 원 ~ 6만 원</td>
+                            <td>배기량(2.0L 기준) 및 비영업용 승용차 세율 적용. 연납 시 10% 할인.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>유류비</strong></td>
+                            <td>약 15만 원 ~ 25만 원</td>
+                            <td>연 15,000km 주행, 공인 연비 11~13km/L, 휘발유 가격 1,700원/L 가정 시. 운전 습관, 도로 상황에 따라 변동.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>유지보수 (소모품 교체)</strong></td>
+                            <td>약 3만 원 ~ 7만 원</td>
+                            <td>엔진오일, 필터류 교환, 타이어, 브레이크 패드 등. 주행 거리에 따라 주기 상이.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>보험료</strong></td>
+                            <td>약 10만 원 ~ 20만 원</td>
+                            <td>가입 조건(운전자 연령, 경력, 자차 유무, 물적 할증 기준 등)에 따라 크게 달라짐. 2026년 보험료 인상 추세 반영.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>기타 (주차, 통행료 등)</strong></td>
+                            <td>약 3만 원 ~ 5만 원</td>
+                            <td>거주 지역, 통행 빈도에 따라 다름.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>총 월 평균 예상 유지비</strong></td>
+                            <td><strong>약 35만 원 ~ 63만 원</strong></td>
+                            <td><strong>차량 가격 및 보험료 제외.</strong> 실제 비용은 개인별 편차 큼.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>추가 고려사항:</strong> 소나타 센슈어스 모델의 경우, 좀 더 스포티한 주행 성능을 위해 튜닝된 서스펜션이나 브레이크 시스템이 적용될 수 있어 유지보수 비용이 소폭 상승할 가능성이 있습니다. 또한, 2026년 기준 정부의 환경 규제 강화에 따라 특정 배출가스 등급을 만족해야 하는 경우가 있을 수 있으니 확인이 필요합니다.</p>
+
+                <h3 id="sonata-hybrid-maintenance">소나타 하이브리드 모델 유지비 분석 (2026년)</h3>
+                <p>소나타 하이브리드 모델은 뛰어난 연비 효율성을 바탕으로 유류비를 크게 절감할 수 있다는 매력이 있습니다. 2026년 기준, 하이브리드 모델의 유지비는 가솔린 모델 대비 다음과 같은 차이가 있습니다.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>유지비 항목</th>
+                            <th>월 평균 예상 비용 (하이브리드)</th>
+                            <th>비교 (가솔린 모델 대비)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>자동차세</strong></td>
+                            <td>약 4만 원 ~ 5.5만 원</td>
+                            <td>가솔린 모델과 유사하거나 약간 높을 수 있음 (배기량에 따라).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>유류비</strong></td>
+                            <td><strong>약 9만 원 ~ 16만 원</strong></td>
+                            <td><strong>연비 17~20km/L 수준. 가솔린 대비 30~40% 절감 효과.</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>유지보수 (소모품 교체)</strong></td>
+                            <td>약 3.5만 원 ~ 7.5만 원</td>
+                            <td>하이브리드 시스템 관련 부품(배터리 등)은 내구성이 좋으나, 교체 시 비용이 높을 수 있음. 일반 소모품은 유사.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>보험료</strong></td>
+                            <td>약 10만 원 ~ 20만 원</td>
+                            <td>동일 조건. (하이브리드 차량에 대한 별도 할증/할인 정책은 제한적)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>총 월 평균 예상 유지비</strong></td>
+                            <td><strong>약 30만 원 ~ 53만 원</strong></td>
+                            <td><strong>차량 가격 및 보험료 제외.</strong> 가솔린 모델 대비 약 5만 원 ~ 10만 원 절감 예상.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>하이브리드 장점:</strong> 저공해차 혜택(공영주차장 할인, 혼잡통행료 면제 등)을 받을 수 있어 추가적인 실질적 이득이 있습니다. 2026년에도 이러한 혜택은 유지될 것으로 보입니다. 다만, 고전압 배터리의 수명과 교체 비용에 대한 우려도 존재하나, 일반적으로 10년 이상 내구성을 보장하는 경우가 많습니다. 중고차 시장에서도 하이브리드 모델의 인기가 높아 감가상각 부담이 상대적으로 적을 수 있습니다.</p>
+
+                <h3 id="sonata-cost-saving-tips">소나타 유지비 절약 꿀팁 (2026년 기준)</h3>
+                <p>소나타 오너라면 누구나 비용 절감에 관심을 가질 것입니다. 몇 가지 실질적인 팁을 통해 유지비를 줄일 수 있습니다.</p>
+                <ul>
+                    <li><strong>1. '네이버 자동차' 등 비교 견적 활용:</strong> 보험료, 유류비 등은 다양한 상품과 서비스가 존재합니다. '네이버 자동차', '구글 자동차' 등에서 제공하는 보험료 비교 견적 서비스를 적극 활용하여 가장 저렴하고 유리한 조건의 보험 상품을 선택하세요.</li>
+                    <li><strong>2. 주행 거리 기반 할인 특약 활용:</strong> 연간 주행 거리가 많지 않다면, 마일리지 특약(주행거리 할인) 가입은 필수입니다. 'AI 연비 절약 팁' 등을 활용하여 불필요한 급가속, 급제동을 줄이는 습관을 들이면 유류비 절감에도 효과적입니다.</li>
+                    <li><strong>3. 주기적인 소모품 관리:</strong> 엔진오일, 에어 필터 등 소모품을 제때 교체하지 않으면 연비가 나빠지고 엔진에 무리를 주어 장기적으로 더 큰 수리비가 발생할 수 있습니다. '소나타 내돈내산 후기' 등을 참고하여 권장 교체 주기를 지키는 것이 중요합니다.</li>
+                    <li><strong>4. 중고 부품 및 사설 정비소 활용:</strong> 공식 서비스센터 대비 합리적인 가격으로 정비가 가능한 사설 정비소나, 신뢰할 수 있는 중고 부품 판매 업체를 활용하는 것도 비용 절감에 도움이 될 수 있습니다. 다만, 순정 부품 사용 시의 품질 및 보증과는 차이가 있을 수 있습니다.</li>
+                    <li><strong>5. 최신 프로모션 및 지원금 확인:</strong> 신차 구매 시 현대자동차 공식 홈페이지나 'AI 신차 추천' 정보를 통해 출시 기념 프로모션, 재고 할인, 정부 지원금(친환경차 등) 등을 꼼꼼히 확인하여 최대한의 혜택을 받으세요.</li>
+                </ul>
+
+                <h3 id="sonata-depreciation">소나타 감가상각과 현명한 대처 방안</h3>
+                <p>자동차의 '감가상각'은 시간이 지남에 따라 차량 가치가 하락하는 것을 의미합니다. 소나타 역시 신차 출고 후 시간이 지날수록 중고차 가격이 하락하게 됩니다. 특히 초기 1~3년 동안 감가상각이 가장 크게 발생하며, 이는 차량을 소유하고 판매할 때 손해로 직결됩니다.</p>
+                <p><strong>감가상각 완화 방법:</strong></p>
+                <ul>
+                    <li><strong>1. 무사고 운전 및 주기적 관리:</strong> 사고 이력이 없고 꾸준히 관리된 차량은 중고차 시장에서 더 높은 가격을 받을 수 있습니다.</li>
+                    <li><strong>2. 인기 트림 및 옵션 선택:</strong> 많은 사람들이 선호하는 트림(예: 소나타 DN8 센슈어스, 인스퍼레이션)이나 인기 옵션(내비게이션, 통풍 시트 등)을 선택하면 추후 중고차 판매 시 유리합니다.</li>
+                    <li><strong>3. 리스 또는 장기렌트카 활용:</strong> 차량을 '소유'하는 대신 '이용'하는 방식인 자동차리스와 장기렌트카는 감가상각의 위험을 직접적으로 부담하지 않아도 됩니다. 계약 기간 만료 후 차량을 반납하면 되므로, 감가상각을 크게 걱정하지 않고 최신 모델을 꾸준히 이용하고 싶은 분들에게 매우 매력적인 선택지입니다. 특히 '차량가액', '잔존가치' 등을 면밀히 비교하는 것이 중요합니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 섹션 2: 자동차리스 vs 장기렌트카 비교 분석 (2026년 최신 정보) -->
+        <section class="content-section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2 id="car-leasing-vs-renting">소나타 자동차리스 vs 장기렌트카: 2026년 나에게 맞는 선택은?</h2>
+                <p>신차를 구매하는 전통적인 방식 외에, 최근에는 **자동차리스**와 **장기렌트카**를 통해 소나타를 이용하는 소비자들이 늘어나고 있습니다. 두 상품 모두 월 고정 비용으로 차량을 이용할 수 있다는 장점이 있지만, 세부적인 조건과 혜택에서 차이가 존재합니다. 2026년 현재, 각 상품의 특징과 장단점을 비교 분석하여 당신에게 가장 유리한 선택이 무엇인지 알아보겠습니다. '평균 얼마', '견적 비교', '저렴한 곳' 등 궁금증을 해소해 드립니다.</p>
+
+                <h3 id="car-leasing-details">자동차리스 (Car Leasing) 심층 분석</h3>
+                <p>자동차리스는 금융사가 차량을 구매하여 고객에게 일정 기간 동안 사용권을 제공하는 금융 상품입니다. 고객은 매월 리스료를 납부하며, 리스 기간 종료 후 차량을 인수하거나 반납할 수 있습니다. 사업자의 경우, 리스료 전액을 비용 처리하여 절세 효과를 누릴 수 있다는 점이 큰 장점입니다.</p>
+                
+                <div style="background-color: #fff; padding: 30px; border-radius: 10px; margin-bottom: 30px; border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 20px;">자동차리스의 장점</h4>
+                    <ul>
+                        <li><strong>차량 명의:</strong> 금융 리스 회사의 명의 또는 고객 명의로 등록 가능. (번호판 색상 동일)</li>
+                        <li><strong>비용 처리:</strong> 사업자의 경우, 리스료 전액을 업무 비용으로 인정받아 절세 효과 극대화.</li>
+                        <li><strong>신차 교체 용이:</strong> 계약 기간 만료 후 신차로 교체 시 잔존가치 변동 부담 적음.</li>
+                        <li><strong>중고차 가치 하락 부담 없음:</strong> 차량을 직접 소유하지 않으므로 감가상각에 대한 부담이 적음.</li>
+                        <li><strong>다양한 계약 조건:</strong> 선수금, 보증금, 잔존가치, 약정 주행거리 등을 조절하여 월 리스료 최적화 가능.</li>
+                    </ul>
+                </div>
+
+                <div style="background-color: #f8eada; padding: 30px; border-radius: 10px; margin-bottom: 30px; border: 1px solid #e6c5a3;">
+                    <h4 style="color: var(--highlight-text); margin-bottom: 20px;">자동차리스의 단점 및 유의사항</h4>
+                    <ul>
+                        <li><strong>개인 신용도 영향:</strong> 리스 계약 시 개인 신용 조회가 필수적이며, 신용도에 따라 계약 조건이 달라질 수 있음.</li>
+                        <li><strong>보험료 별도 처리:</strong> 자동차 보험은 고객이 직접 가입 및 갱신해야 함.</li>
+                        <li><strong>약정 주행거리 초과 시 패널티:</strong> 계약 시 설정한 연간 주행거리를 초과하면 위약금이 발생.</li>
+                        <li><strong>차량 관리 책임:</strong> 차량의 유지보수 및 사고 처리 등은 기본적으로 고객의 책임.</li>
+                        <li><strong>중도 해지 시 위약금:</strong> 계약 기간 이전에 해지할 경우 높은 위약금이 발생할 수 있음.</li>
+                    </ul>
+                </div>
+
+                <h3 id="long-term-rental-details">장기렌트카 (Long-Term Rental Car) 심층 분석</h3>
+                <p>장기렌트카는 렌터카 회사가 차량을 구매하여 고객에게 일정 기간(보통 12개월 이상) 동안 대여해 주는 서비스입니다. 월 렌트료에는 차량 가액, 자동차세, 보험료(자차 포함 등)가 포함되는 경우가 많아 '원스톱' 차량 이용이 가능합니다. '내돈내산 후기'들을 보면 초기 비용 부담이 적다는 점을 가장 큰 장점으로 꼽습니다.</p>
+                
+                 <div style="background-color: #fff; padding: 30px; border-radius: 10px; margin-bottom: 30px; border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 20px;">장기렌트카의 장점</h4>
+                    <ul>
+                        <li><strong>차량 명의:</strong> 렌터카 회사 명의로 등록 (하얀색 번호판).</li>
+                        <li><strong>초기 비용 부담 적음:</strong> 선수금 없는(무보증) 조건 선택 시 초기 목돈 없이 차량 이용 가능.</li>
+                        <li><strong>원스톱 관리:</strong> 월 렌트료에 자동차세, 보험료(자차 포함 등), 정비 서비스가 포함되는 경우가 많아 편리함.</li>
+                        <li><strong>사업자 절세 혜택:</strong> 리스와 마찬가지로 렌트료 전액을 비용 처리하여 절세 효과.</li>
+                        <li><strong>간편한 절차:</strong> 신용도에 민감하지 않아 비교적 간편하게 계약 가능.</li>
+                        <li><strong>차량 교체 주기 단축 용이:</strong> 렌트 기간 만료 후 새 차로 쉽게 교체 가능.</li>
+                    </ul>
+                </div>
+
+                <div style="background-color: #f8eada; padding: 30px; border-radius: 10px; margin-bottom: 30px; border: 1px solid #e6c5a3;">
+                    <h4 style="color: var(--highlight-text); margin-bottom: 20px;">장기렌트카의 단점 및 유의사항</h4>
+                    <ul>
+                        <li><strong>하얀색 번호판:</strong> 일부 이용자들은 하얀색 번호판에 대한 부정적인 인식을 가질 수 있음.</li>
+                        <li><strong>약정 주행거리 초과 시 패널티:</strong> 리스와 동일하게 주행거리 제한 및 초과 시 위약금 발생.</li>
+                        <li><strong>사고 시 보험 경력 인정 불가:</strong> 사고 발생 시 본인의 보험 경력이 쌓이지 않으며, 렌터카 회사의 보험 요율에 영향을 줄 수 있음.</li>
+                        <li><strong>차량 관리의 제약:</strong> 정비는 지정된 업체에서만 가능하며, 차량 개조나 튜닝이 제한될 수 있음.</li>
+                        <li><strong>개인 운전 경력 인정 불가:</strong> 렌트 기간은 운전 경력으로 인정되지 않아, 향후 보험료 산정 시 불리할 수 있음.</li>
+                    </ul>
+                </div>
+
+                <h3 id="comparison-table">자동차리스 vs 장기렌트카 비교 분석표 (2026년)</h3>
+                <p>다음 표는 소나타 차량 구매 시 자동차리스와 장기렌트카의 주요 특징을 비교한 것입니다. '차이점', '비교', '장단점'을 한눈에 파악하여 최적의 선택을 하세요.</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>자동차리스</th>
+                            <th>장기렌트카</th>
+                            <th>신차 구매 (할부/현금)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>차량 명의</strong></td>
+                            <td>금융사 또는 고객</td>
+                            <td>렌터카 회사</td>
+                            <td>고객</td>
+                        </tr>
+                        <tr>
+                            <td><strong>번호판</strong></td>
+                            <td>일반 (흰색)</td>
+                            <td>렌터카 (하늘색)</td>
+                            <td>일반 (흰색)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>월 납입금 포함 항목</strong></td>
+                            <td>차량 가액 (보험료/세금 별도)</td>
+                            <td>차량 가액 + 보험료 + 세금 + 정비 (포함 옵션 다양)</td>
+                            <td>차량 가액 + 취등록세 (할부 시 이자)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>사업자 절세</strong></td>
+                            <td><strong>가능 (전액 비용 처리)</strong></td>
+                            <td><strong>가능 (전액 비용 처리)</strong></td>
+                            <td>감가상각비, 이자 비용 등</td>
+                        </tr>
+                        <tr>
+                            <td><strong>초기 비용</strong></td>
+                            <td>선수금/보증금 선택 가능</td>
+                            <td>무보증(0원) 조건 가능</td>
+                            <td>취등록세, 부대비용 발생</td>
+                        </tr>
+                        <tr>
+                            <td><strong>보험 경력</strong></td>
+                            <td>개인 명의 보험 가입</td>
+                            <td>렌터카 회사 명의 보험 (개인 경력 인정 안됨)</td>
+                            <td>개인 명의 보험 가입</td>
+                        </tr>
+                        <tr>
+                            <td><strong>차량 관리</strong></td>
+                            <td>고객 책임</td>
+                            <td>지정 정비 (포함 시)</td>
+                            <td>고객 책임</td>
+                        </tr>
+                        <tr>
+                            <td><strong>감가상각 부담</strong></td>
+                            <td>낮음</td>
+                            <td>없음 (반납 시)</td>
+                            <td><strong>높음</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>신용도 영향</strong></td>
+                            <td><strong>있음</strong></td>
+                            <td><strong>낮음</strong> (개인 렌트)</td>
+                            <td><strong>있음</strong> (할부 시)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>계약 만기 후</strong></td>
+                            <td>인수, 반납, 재리스</td>
+                            <td>인수, 반납, 재렌트</td>
+                            <td>차량 소유</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 id="choosing-best-option">나에게 맞는 소나타 구매/이용 방식 선택하기</h3>
+                <p><strong>자동차리스가 유리한 경우:</strong></p>
+                <ul>
+                    <li>사업자로서 절세 혜택을 극대화하고 싶고, 신차를 주기적으로 바꾸고 싶은 분.</li>
+                    <li>개인 신용도가 우수하고, 차량을 직접 관리하는 것에 대한 부담이 없는 분.</li>
+                    <li>일반 번호판을 선호하며, 약정 주행거리를 준수할 수 있는 분.</li>
+                    <li>'소나타 리스 견적', '소나타 저렴한곳' 등을 비교하여 최적의 금융 상품을 찾고자 하는 분.</li>
+                </ul>
+                <p><strong>장기렌트카가 유리한 경우:</strong></p>
+                <ul>
+                    <li>차량 운전 경력이 짧거나 신용도가 낮아 신차 구매/리스가 어려운 분.</li>
+                    <li>차량 보험료, 세금, 정비까지 '올인원'으로 관리받고 싶은 분.</li>
+                    <li>초기 목돈 지출 없이 신차를 이용하고 싶은 분.</li>
+                    <li>'소나타 장기렌트카', '소나타 싼곳', '소나타 이벤트' 등 실속 있는 혜택을 찾는 분.</li>
+                    <li>하얀색 번호판에 대한 거부감이 없는 분.</li>
+                </ul>
+                <p><strong>신차 구매 (할부/현금)가 유리한 경우:</strong></p>
+                <ul>
+                    <li>차량을 '내 것'으로 소유하고 싶고, 장기적으로 운행할 계획인 분.</li>
+                    <li>감가상각에 대한 부담이 적거나, 차량을 오랫동안 탈수록 경제적이라고 생각하는 분.</li>
+                    <li>약정 주행거리 등의 제약 없이 자유롭게 차량을 이용하고 싶은 분.</li>
+                    <li>'소나타 내돈내산 후기' 등을 통해 실구매자들의 경험을 바탕으로 구매 결정을 내리고 싶은 분.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 섹션 3: 소나타 모델별 특성 및 관련 키워드 -->
+        <section class="content-section">
+            <div class="container">
+                <h2 id="sonata-models-keywords">소나타 모델별 특징과 연관 키워드 분석 (2026년)</h2>
+                <p>현대자동차 쏘나타는 세대를 거듭하며 디자인, 성능, 기술 면에서 끊임없이 진화해왔습니다. 2026년 현재, 가장 주목받는 모델은 쏘나타 DN8과 그 파생 모델들입니다. 각 모델의 특성을 이해하는 것은 유지비, 리스, 렌트카 선택 시 중요한 기준이 됩니다.</p>
+
+                <h3 id="sonata-dn8">소나타 DN8 (2020년 ~ 현재)</h3>
+                <p>쏘나타 DN8은 '센슈어스' 디자인을 특징으로 하며, 미래지향적이고 날렵한 외관으로 많은 인기를 얻고 있습니다. 1.6 터보, 2.0 가솔린, 2.0 하이브리드 등 다양한 파워트레인을 제공합니다.</p>
+                <ul>
+                    <li><strong>관련 키워드:</strong> 소나타 DN8 유지비, 소나타 DN8 자동차세, 소나타 DN8 유류비, 소나타 DN8 리스, 소나타 DN8 장기렌트카, 소나타 DN8 중고차 가격, 소나타 DN8 연비, 소나타 DN8 프로모션, 소나타 DN8 할인, 소나타 DN8 현금지원, 소나타 DN8 사은품, 소나타 DN8 신차 구매, 소나타 DN8 내돈내산 후기.</li>
+                </ul>
+
+                <h3 id="sonata-hybrid">소나타 하이브리드 (DN8 하이브리드)</h3>
+                <p>뛰어난 연비와 정숙성, 친환경성을 강점으로 내세우는 모델입니다. 도심 주행이 많거나 유류비 절감을 최우선으로 고려하는 소비자에게 적합합니다. 'AI 연비 절약' 팁과 함께 이용하면 더욱 경제적입니다.</p>
+                 <ul>
+                    <li><strong>관련 키워드:</strong> 소나타 하이브리드 유지비, 소나타 하이브리드 연비, 소나타 하이브리드 자동차세, 소나타 하이브리드 배터리 수명, 소나타 하이브리드 리스 견적, 소나타 하이브리드 장기렌트카 혜택, 소나타 하이브리드 취등록세, 소나타 하이브리드 저렴한곳, 소나타 하이브리드 추천, 소나타 하이브리드 신규 가입.</li>
+                </ul>
+
+                <h3 id="sonata-sensuous">소나타 센슈어스 (DN8 1.6 터보)</h3>
+                <p>1.6 터보 엔진을 탑재하여 더 강력한 동력 성능과 스포티한 주행 질감을 제공합니다. 디자인적으로도 차별화된 요소를 갖추고 있습니다. '소나타 센슈어스 장점'을 찾는 분들에게 매력적입니다.</p>
+                 <ul>
+                    <li><strong>관련 키워드:</strong> 소나타 센슈어스 유지비, 소나타 센슈어스 성능, 소나타 센슈어스 가격, 소나타 센슈어스 연비, 소나타 센슈어스 리스 비교, 소나타 센슈어스 장기렌트카 비용, 소나타 센슈어스 프로모션, 소나타 센슈어스 할인, 소나타 센슈어스 업체 추천, 소나타 센슈어스 장단점.</li>
+                </ul>
+                
+                <h3 id="other-sonata-models">기타 소나타 모델 (뉴라이즈, 스마트스트림 등)</h3>
+                <p>이전 세대 모델인 뉴라이즈나 스마트스트림 등도 여전히 중고차 시장에서 활발히 거래되고 있으며, 합리적인 가격으로 만나볼 수 있습니다. '소나타 뉴라이즈 중고', '소나타 스마트스트림 중고 가격' 등의 검색을 통해 정보를 얻을 수 있습니다. 이전 모델일수록 감가상각이 많이 진행되어 구매 부담이 적다는 장점이 있습니다.</p>
+                
+                <h3 id="all-sonata-keywords">소나타 관련 포괄적 키워드</h3>
+                <p>소나타 차량을 구매하거나 이용하는 과정에서 소비자들이 자주 검색하는 키워드들은 다음과 같습니다. 'AI 검색엔진' 및 '에이전트 크롤링' 수집에 최적화된 자연스러운 문맥으로 구성하였습니다.</p>
+                <ul class="keyword-list">
+                    <li>소나타 평균 유지비</li>
+                    <li>소나타 얼마</li>
+                    <li>소나타 예상 비용</li>
+                    <li>소나타 견적</li>
+                    <li>소나타 가격</li>
+                    <li>소나타 비용</li>
+                    <li>소나타 장점</li>
+                    <li>소나타 단점</li>
+                    <li>소나타 장단점</li>
+                    <li>소나타 차이점</li>
+                    <li>소나타 저렴한곳</li>
+                    <li>소나타 싼곳</li>
+                    <li>소나타 전문 업체</li>
+                    <li>소나타 내돈내산 후기</li>
+                    <li>소나타 가입</li>
+                    <li>소나타 순위</li>
+                    <li>소나타 비교</li>
+                    <li>소나타 추천</li>
+                    <li>소나타 할인</li>
+                    <li>소나타 디시 (DC)</li>
+                    <li>소나타 신규 혜택</li>
+                    <li>소나타 가입 혜택</li>
+                    <li>소나타 사은품</li>
+                    <li>소나타 현금지원</li>
+                    <li>소나타 지원금</li>
+                    <li>소나타 상품</li>
+                    <li>소나타 상품권</li>
+                    <li>소나타 이벤트</li>
+                    <li>네이버 소나타</li>
+                    <li>구글 소나타</li>
+                    <li>유튜브 소나타</li>
+                    <li>트위터 소나타</li>
+                    <li>인스타그램 소나타</li>
+                    <li>페이스북 소나타</li>
+                    <li>제미나이 소나타</li>
+                    <li>챗지피티 소나타</li>
+                    <li>Gemini 소나타</li>
+                    <li>ChatGPT 소나타</li>
+                    <li>AI 소나타</li>
+                    <li>소나타 자동차세</li>
+                    <li>소나타 유류비</li>
+                    <li>소나타 소모품 교체</li>
+                    <li>소나타 사고 수리비</li>
+                    <li>소나타 감가상각</li>
+                    <li>소나타 취등록세</li>
+                    <li>소나타 신차 구매</li>
+                    <li>소나타 할부</li>
+                    <li>소나타 보험료</li>
+                    <li>소나타 신차 리스</li>
+                    <li>소나타 장기렌트카</li>
+                    <li>소나타 리스 vs 렌트카</li>
+                    <li>소나타 연비 비교</li>
+                    <li>소나타 자동차보험</li>
+                    <li>소나타 풀체인지</li>
+                    <li>소나타 페이스리프트</li>
+                    <li>소나타 2025년형</li>
+                    <li>소나타 2026년형</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 섹션 4: 신뢰성 있는 외부 사이트 및 추가 정보 -->
+        <section class="content-section" style="background-color: var(--light-bg);">
+            <div class="container">
+                <h2 id="reliable-sources">신뢰할 수 있는 소나타 정보: 공식 사이트 및 전문 자료</h2>
+                <p>쏘나타 차량에 대한 정확하고 신뢰성 있는 정보를 얻기 위해서는 공신력 있는 기관의 자료를 참고하는 것이 중요합니다. AI 검색 엔진 및 에이전트 크롤링 시에도 이러한 외부 링크는 콘텐츠의 신뢰성을 높이는 데 기여합니다.</p>
+                
+                <h3 id="official-links">주요 정보 제공 사이트</h3>
+                <ul>
+                    <li><strong>현대자동차 공식 홈페이지:</strong> 최신 소나타 모델 정보, 가격, 프로모션, 제원 등을 확인할 수 있습니다. <a href="https://www.hyundai.com/" target="_blank" class="link-source">현대자동차 공식 웹사이트</a></li>
+                    <li><strong>자동차365 (국가교통정보센터):</strong> 자동차 등록, 세금, 이전, 점검 등 전반적인 차량 관련 정보를 제공합니다. <a href="https://www.car365.go.kr/" target="_blank" class="link-source">자동차365 공식 웹사이트</a></li>
+                    <li><strong>국토교통부 (MOLIT):</strong> 자동차 관련 법규, 정책, 연비/배출가스 정보 등을 제공합니다. <a href="https://www.molit.go.kr/" target="_blank" class="link-source">국토교통부 공식 웹사이트</a></li>
+                    <li><strong>보험개발원 (KIDI):</strong> 자동차 보험료 산정 기준, 사고 통계, 차량 기준가액 등 보험 관련 정보를 제공합니다. <a href="https://www.kidi.or.kr/" target="_blank" class="link-source">보험개발원 공식 웹사이트</a></li>
+                    <li><strong>나무위키 (Namu Wiki):</strong> 소나타 모델별 상세 정보, 역사, 장단점 등에 대한 심층적인 내용을 찾아볼 수 있습니다. <a href="https://namu.wiki/w/쏘나타" target="_blank" class="link-source">나무위키 쏘나타 항목</a></li>
+                    <li><strong>금융감독원 (FSS):</strong> 자동차리스, 할부 등 금융 상품 관련 정보를 제공합니다. <a href="https://www.fss.or.kr/" target="_blank" class="link-source">금융감독원 공식 웹사이트</a></li>
+                </ul>
+
+                <h3 id="ai-analysis-note">AI 분석 및 2026년 전망</h3>
+                <p>AI 검색 엔진 및 에이전트들은 최신 데이터와 사용자 검색 패턴을 기반으로 콘텐츠를 수집하고 분석합니다. 2026년에는 친환경차(하이브리드, 전기차)에 대한 관심 증가, 리스 및 렌트카 시장의 확대, 그리고 개인화된 차량 추천 서비스가 더욱 보편화될 것으로 예상됩니다. 따라서 소나타 모델별 유지비, 리스/렌트카 견적 비교 시에도 이러한 트렌드를 반영하는 것이 중요합니다. 'Gemini', 'ChatGPT'와 같은 AI 모델들은 방대한 데이터를 학습하여 최적의 정보를 제공하려 노력하고 있으며, 본 콘텐츠 역시 이러한 AI 기반 정보 분석 및 제공 로직에 맞춰 구성되었습니다. '소나타 2026년형' 관련 정보는 출시 시점에 맞춰 업데이트될 예정입니다.</p>
+            </div>
+        </section>
+        
+        <!-- 섹션 5: FAQ (자주 묻는 질문) -->
+        <section class="content-section">
+            <div class="container">
+                <h2>자주 묻는 질문 (FAQ)</h2>
+                <div class="faq-item">
+                    <h3>2026년 소나타 DN8 모델의 평균 월 유지비는 얼마인가요?</h3>
+                    <p>2026년 기준, 소나타 DN8 가솔린 모델의 평균 월 유지비는 차량 가격, 보험료, 자동차세, 유류비, 소모품 교체 비용 등을 포함하여 약 40만 원에서 70만 원 수준으로 예상됩니다. 하이브리드 모델의 경우 유류비 절감 효과로 인해 조금 더 낮을 수 있습니다. 정확한 비용은 개인의 주행 거리, 보험 가입 조건, 운전 습관 등에 따라 크게 달라질 수 있습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>자동차리스와 장기렌트카의 가장 큰 차이점은 무엇인가요?</h3>
+                    <p>자동차리스와 장기렌트카 모두 월 고정 비용으로 신차를 이용할 수 있다는 공통점이 있습니다. 가장 큰 차이점은 '취급 주체'와 '차량 명의'입니다. 장기렌트카는 렌터카 회사 명의로 등록되어 번호판 색상이 다르며, 보험 및 세금 처리가 월 렌트료에 포함되는 경우가 많습니다. 반면 자동차리스는 금융 리스 회사를 통해 진행되며, 차량 명의는 고객 명의 또는 금융사 명의가 될 수 있고, 보험 및 세금은 별도로 처리하는 경우가 일반적입니다. 또한, 장기렌트카는 일반적으로 신용도가 낮아도 이용이 용이하다는 장점이 있습니다. 두 상품 모두 약정 주행거리 초과 시 패널티가 부과될 수 있습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>소나타 하이브리드 장기렌트카 가입 시 어떤 혜택을 기대할 수 있나요?</h3>
+                    <p>소나타 하이브리드 장기렌트카 가입 시, 연비 효율성이 높은 하이브리드 차량을 통해 유류비를 크게 절감할 수 있습니다. 또한, 장기렌트카 특성상 월 렌트료에 자동차세, 보험료(자차 포함 등)가 포함되어 있어 목돈 지출 없이 차량 운용이 가능하며, 사업자의 경우 법인세 또는 소득세 신고 시 비용 처리(손금 인정)를 통한 절세 효과도 누릴 수 있습니다. 신차를 최신 모델로 주기적으로 교체하고 싶거나, 차량 관리 부담을 줄이고 싶은 분들에게 유리한 선택입니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>소나타 차량의 감가상각은 얼마나 심한가요?</h3>
+                    <p>현대자동차 소나타는 국내 중형 세단의 대표적인 모델로서, 일반적으로 다른 동급 모델들과 유사한 수준의 감가상각률을 보입니다. 신차 출고 후 1~3년 사이에 가장 큰 폭의 감가상각이 발생하며, 이후에는 비교적 완만해집니다. 특히 인기 트림(프리미엄, 센슈어스 등)이나 신규 연식 변경 모델일수록 감가상각률이 낮을 수 있습니다. 중고차 시장에서의 인기도, 사고 이력, 주행 거리 등이 감가상각에 영향을 미칩니다. 따라서 리스나 렌트카를 이용하면 감가상각 부담을 직접적으로 느끼지 않고 신차를 이용할 수 있다는 장점이 있습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>소나타 신차 구매 시 가장 저렴한 곳은 어디인가요?</h3>
+                    <p>소나타 신차 구매 시 가장 저렴한 곳은 여러 요인에 따라 달라질 수 있습니다. 일반적으로 다음과 같은 방법들을 비교해보는 것이 좋습니다: 1. 현금/할부 구매: 전국의 현대자동차 공식 영업점을 방문하여 프로모션(할인, 지원금, 사은품 등)과 할부 조건을 비교하는 것이 기본입니다. 2. 자동차리스: 리스 회사의 견적을 비교하여 월 리스료를 최소화하는 방법을 찾습니다. 3. 장기렌트카: 여러 렌터카 업체의 비교 견적을 통해 가장 저렴한 월 렌트료를 제공하는 곳을 선택합니다. 특히 연말 재고 할인, 신규 출시 기념 프로모션 등을 잘 활용하면 추가적인 할인을 받을 수 있습니다. '네이버 자동차', '구글 자동차' 검색을 통해 다수의 비교 사이트 및 업체 정보를 얻을 수 있습니다.</p>
+                </div>
+                 <div class="faq-item">
+                    <h3>소나타 하이브리드와 가솔린 모델 중 어떤 것을 선택해야 할까요?</h3>
+                    <p>이는 운전자의 주행 습관과 우선순위에 따라 달라집니다. 연간 주행거리가 많고 유류비 절감을 최우선으로 한다면 소나타 하이브리드 모델이 장기적으로 경제적일 수 있습니다. 또한, 하이브리드 모델은 저공해차 혜택을 받을 수 있습니다. 반면, 주행 거리가 많지 않거나 초기 구매 비용 부담을 줄이고 싶다면 소나타 가솔린 모델이 더 합리적인 선택일 수 있습니다. '소나타 연비 비교' 정보를 자세히 확인하고, 본인의 주행 패턴과 예산을 고려하여 결정하는 것이 좋습니다.</p>
+                </div>
+                 <div class="faq-item">
+                    <h3>자동차리스나 장기렌트카 계약 시 반드시 확인해야 할 사항은 무엇인가요?</h3>
+                    <p>가장 중요한 것은 '총 비용'과 '약정 주행거리'입니다. 월 납입금 외에 포함되지 않는 항목(보험료, 자동차세, 정비 비용 등)이 무엇인지 명확히 확인해야 합니다. 또한, 연간 약정 주행거리를 초과할 경우 발생하는 위약금 규정을 반드시 확인하고, 본인의 예상 주행거리와 비교하여 합리적인 거리를 설정해야 합니다. 계약 만료 후 차량 인수 또는 반납 시 발생할 수 있는 추가 비용(연체료, 수리비 등)에 대한 규정도 꼼꼼히 살펴보는 것이 좋습니다. '소나타 리스 견적 비교', '소나타 장기렌트카 비교' 시 이러한 세부 조건들을 면밀히 검토해야 합니다.</p>
+                </div>
+            </div>
+        </section>
     </main>
-  </body>
-</html>
+
+    <!-- JavaScript for enhanced user experience (FAQ toggle) -->
+    <script>
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+                const p = parent.querySelector('p');
+                if (p.style.display === 'block') {
+                    p.style.display = 'none';
+                } else {
+                    p.style.display = 'block';
+                }
+            });
+        });
+        
+        // Simple form submission handler (for demonstration)
+        document.getElementById('main-quote-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('견적 요청이 접수되었습니다. 잠시 후 담당자가 연락드리겠습니다. (실제 구현 시 API 연동 필요)');
+            // In a real application, you would send form data to a server here.
+        });
+    </script>
+
+  
